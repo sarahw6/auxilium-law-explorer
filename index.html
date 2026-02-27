@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auxilium Law Explorer - No Surprises Act & Healthcare Dispute Resolution</title>
+<style>
+:root {
+  --navy: #1a2744;
+  --navy-light: #2c3e6b;
+  --teal: #0d9488;
+  --teal-light: #14b8a6;
+  --cyan: #06b6d4;
+  --cyan-light: #22d3ee;
+  --mint: #5eead4;
+  --bg: #f0fdfa;
+  --card-bg: #ffffff;
+  --text: #1a2744;
+  --text-light: #64748b;
+  --gradient: linear-gradient(135deg, #0d9488, #06b6d4);
+  --gradient-dark: linear-gradient(135deg, #1a2744, #2c3e6b);
+  --shadow: 0 4px 20px rgba(13,148,136,0.15);
+  --shadow-hover: 0 8px 30px rgba(13,148,136,0.25);
+  --radius: 16px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+.hero {
+  background: var(--gradient-dark);
+  color:white; text-align:center; padding:40px 20px 30px;
+  position:relative; overflow:hidden;
+}
+.hero::before {
+  content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+  background: radial-gradient(circle at 30% 50%, rgba(14,165,160,0.3) 0%, transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(6,182,212,0.2) 0%, transparent 50%);
+  animation: heroGlow 8s ease-in-out infinite alternate;
+}
+@keyframes heroGlow { 0%{transform:rotate(0deg)} 100%{transform:rotate(10deg)} }
+.hero h1 { font-size:2.4em; position:relative; z-index:1; letter-spacing:-0.5px; }
+.hero h1 span { background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero p { font-size:1.1em; opacity:0.9; margin-top:8px; position:relative; z-index:1; max-width:700px; margin-left:auto; margin-right:auto; }
+.hero .subtitle { font-size:0.85em; opacity:0.7; margin-top:4px; }
+
+/* Navigation */
+.nav-bar {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
+  padding:16px 20px; background:white; border-bottom:2px solid var(--mint);
+  position:sticky; top:0; z-index:100; box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+.nav-btn {
+  padding:8px 16px; border:2px solid var(--teal); border-radius:25px;
+  background:transparent; color:var(--teal); cursor:pointer;
+  font-size:0.85em; font-weight:600; transition:all 0.3s;
+}
+.nav-btn:hover, .nav-btn.active {
+  background:var(--gradient); color:white; border-color:transparent;
+  transform:translateY(-2px); box-shadow:var(--shadow);
+}
+
+/* Sections */
+.section { display:none; padding:20px; max-width:1200px; margin:0 auto; }
+.section.active { display:block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+/* Cards */
+.card {
+  background:var(--card-bg); border-radius:var(--radius); padding:24px;
+  box-shadow:var(--shadow); margin-bottom:20px; transition:all 0.3s;
+  border-left:4px solid var(--teal);
+}
+.card:hover { box-shadow:var(--shadow-hover); transform:translateY(-2px); }
+.card h3 { color:var(--navy); margin-bottom:10px; font-size:1.2em; }
+.card-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:20px; }
+
+/* Kid-friendly vocabulary tooltip */
+.vocab {
+  color:var(--teal); font-weight:700; cursor:help;
+  border-bottom:2px dashed var(--cyan); position:relative; display:inline;
+}
+.vocab:hover::after {
+  content:attr(data-kid); position:absolute; bottom:calc(100% + 8px); left:50%;
+  transform:translateX(-50%); background:var(--navy); color:white;
+  padding:10px 14px; border-radius:12px; font-size:0.82em; width:240px;
+  text-align:center; z-index:50; font-weight:400; line-height:1.4;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.vocab:hover::before {
+  content:''; position:absolute; bottom:calc(100% + 2px); left:50%;
+  transform:translateX(-50%); border:6px solid transparent;
+  border-top-color:var(--navy); z-index:51;
+}
+
+/* Stats */
+.stat-row { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:16px; margin:20px 0; }
+.stat-box {
+  background:var(--gradient); color:white; border-radius:var(--radius);
+  padding:20px; text-align:center;
+}
+.stat-box .number { font-size:2.2em; font-weight:800; display:block; }
+.stat-box .label { font-size:0.85em; opacity:0.9; margin-top:4px; }
+
+/* Timeline */
+.timeline { position:relative; padding-left:40px; margin:20px 0; }
+.timeline::before { content:''; position:absolute; left:15px; top:0; bottom:0; width:3px; background:var(--gradient); border-radius:2px; }
+.timeline-item { position:relative; margin-bottom:24px; }
+.timeline-item::before {
+  content:''; position:absolute; left:-32px; top:4px; width:18px; height:18px;
+  background:var(--teal); border-radius:50%; border:3px solid white;
+  box-shadow: 0 0 0 3px var(--teal);
+}
+.timeline-item h4 { color:var(--navy); font-size:1em; }
+.timeline-item .day-badge {
+  display:inline-block; background:var(--navy); color:white;
+  padding:2px 10px; border-radius:10px; font-size:0.75em; margin-bottom:6px;
+}
+
+/* Interactive Map */
+.map-container { text-align:center; margin:20px 0; position:relative; }
+.map-container svg { max-width:100%; height:auto; }
+.map-container svg path {
+  stroke:#fff; stroke-width:1; cursor:pointer; transition:all 0.3s;
+}
+.map-container svg path:hover { stroke:var(--navy); stroke-width:2; filter:brightness(0.9); }
+.state-info-panel {
+  background:white; border-radius:var(--radius); padding:20px;
+  box-shadow:var(--shadow); margin-top:16px; min-height:120px;
+  border-top:4px solid var(--teal);
+}
+
+/* Quiz */
+.quiz-card {
+  background:white; border-radius:var(--radius); padding:28px;
+  box-shadow:var(--shadow); margin:20px 0;
+}
+.quiz-card h3 { color:var(--navy); margin-bottom:16px; }
+.quiz-option {
+  display:block; width:100%; padding:14px 18px; margin:8px 0;
+  border:2px solid #e2e8f0; border-radius:12px; background:white;
+  cursor:pointer; text-align:left; font-size:0.95em; transition:all 0.3s;
+}
+.quiz-option:hover { border-color:var(--teal); background:#f0fdfa; }
+.quiz-option.correct { border-color:#10b981; background:#ecfdf5; color:#065f46; }
+.quiz-option.wrong { border-color:#ef4444; background:#fef2f2; color:#991b1b; }
+.quiz-feedback { margin-top:12px; padding:12px; border-radius:10px; font-size:0.9em; display:none; }
+
+/* Case Study */
+.case-study {
+  border:2px solid var(--mint); border-radius:var(--radius); overflow:hidden; margin:16px 0;
+}
+.case-header {
+  background:var(--gradient-dark); color:white; padding:16px 20px;
+  cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+}
+.case-header h4 { font-size:1em; }
+.case-header .toggle { font-size:1.4em; transition:transform 0.3s; }
+.case-body { padding:0; max-height:0; overflow:hidden; transition:all 0.4s ease; }
+.case-body.open { padding:20px; max-height:2000px; }
+.case-tag {
+  display:inline-block; padding:3px 10px; border-radius:8px;
+  font-size:0.75em; font-weight:600; margin:2px;
+}
+.tag-red { background:#fef2f2; color:#991b1b; }
+.tag-amber { background:#fffbeb; color:#92400e; }
+.tag-green { background:#ecfdf5; color:#065f46; }
+.tag-blue { background:#eff6ff; color:#1e40af; }
+
+/* Stakeholder cards */
+.stakeholder {
+  display:flex; align-items:flex-start; gap:16px; padding:16px;
+  background:white; border-radius:var(--radius); box-shadow:var(--shadow); margin:12px 0;
+}
+.stakeholder-icon {
+  width:50px; height:50px; border-radius:14px; display:flex; align-items:center;
+  justify-content:center; font-size:1.6em; flex-shrink:0;
+}
+
+/* Progress bar */
+.progress-bar { background:#e2e8f0; border-radius:10px; height:10px; margin:16px 0; overflow:hidden; }
+.progress-fill { height:100%; background:var(--gradient); border-radius:10px; transition:width 0.5s; }
+
+/* Tabs */
+.tab-row { display:flex; gap:4px; margin-bottom:16px; flex-wrap:wrap; }
+.tab-btn {
+  padding:8px 16px; border:none; border-radius:10px 10px 0 0;
+  background:#e2e8f0; color:var(--text-light); cursor:pointer;
+  font-size:0.85em; font-weight:600; transition:all 0.3s;
+}
+.tab-btn.active { background:var(--teal); color:white; }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+
+/* Accordion for vocabulary */
+.vocab-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
+.vocab-card {
+  background:white; border-radius:12px; padding:16px; box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  border-left:4px solid var(--cyan); cursor:pointer; transition:all 0.3s;
+}
+.vocab-card:hover { box-shadow:var(--shadow); }
+.vocab-card .term { font-weight:700; color:var(--navy); font-size:1em; }
+.vocab-card .grown-up { color:var(--text-light); font-size:0.85em; margin:4px 0; }
+.vocab-card .kid-def { color:var(--teal); font-size:0.9em; font-weight:500; padding:8px; background:#f0fdfa; border-radius:8px; margin-top:8px; }
+
+/* Map legend */
+.map-legend {
+  display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:16px 0;
+}
+.legend-item { display:flex; align-items:center; gap:6px; font-size:0.82em; }
+.legend-dot { width:14px; height:14px; border-radius:4px; }
+
+/* Responsive */
+@media(max-width:768px) {
+  .hero h1 { font-size:1.6em; }
+  .card-grid { grid-template-columns:1fr; }
+  .stat-row { grid-template-columns:repeat(2,1fr); }
+  .nav-btn { font-size:0.75em; padding:6px 12px; }
+}
+
+/* Print styles */
+@media print {
+  .nav-bar { display:none; }
+  .section { display:block !important; page-break-inside:avoid; }
+}
+
+.section-header {
+  text-align:center; margin-bottom:24px;
+}
+.section-header h2 {
+  font-size:1.8em; color:var(--navy); margin-bottom:6px;
+}
+.section-header p { color:var(--text-light); font-size:0.95em; }
+.badge {
+  display:inline-block; background:var(--gradient); color:white;
+  padding:4px 12px; border-radius:20px; font-size:0.78em; font-weight:600;
+}
+
+/* Flowchart */
+.flow-step {
+  display:flex; align-items:flex-start; gap:16px; margin:16px 0;
+  padding:16px; background:white; border-radius:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+.flow-num {
+  width:36px; height:36px; border-radius:50%; background:var(--gradient);
+  color:white; display:flex; align-items:center; justify-content:center;
+  font-weight:800; flex-shrink:0;
+}
+
+/* Fun score display */
+.score-display {
+  text-align:center; padding:20px; background:var(--gradient-dark); color:white;
+  border-radius:var(--radius); margin:16px 0;
+}
+.score-display .score-num { font-size:3em; font-weight:800; }
+
+/* Highlight box */
+.highlight-box {
+  background: linear-gradient(135deg, #f0fdfa, #ecfeff);
+  border:2px solid var(--mint); border-radius:var(--radius);
+  padding:20px; margin:16px 0;
+}
+.highlight-box h4 { color:var(--teal); margin-bottom:8px; }
+
+/* Warning box */
+.warning-box {
+  background:#fffbeb; border:2px solid #fbbf24; border-radius:var(--radius);
+  padding:16px 20px; margin:16px 0;
+}
+.warning-box h4 { color:#92400e; margin-bottom:6px; }
+
+/* AI Law cards */
+.ai-card {
+  background:white; border-radius:var(--radius); overflow:hidden;
+  box-shadow:var(--shadow); margin:16px 0;
+}
+.ai-card-header {
+  padding:16px 20px; color:white; font-weight:700;
+}
+.ai-card-body { padding:20px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1><span>AUXILIUM</span> Law Explorer</h1>
+  <p>Master the No Surprises Act & Healthcare Dispute Resolution</p>
+  <p class="subtitle">Interactive Learning for the Case Engine for Healthcare Disputes</p>
+</div>
+
+<!-- NAVIGATION -->
+<div class="nav-bar" id="navBar">
+  <button class="nav-btn active" onclick="showSection('overview')">Overview</button>
+  <button class="nav-btn" onclick="showSection('nsa')">No Surprises Act</button>
+  <button class="nav-btn" onclick="showSection('ppdr')">PPDR Process</button>
+  <button class="nav-btn" onclick="showSection('map')">State Map</button>
+  <button class="nav-btn" onclick="showSection('ai-laws')">AI & Health Laws</button>
+  <button class="nav-btn" onclick="showSection('cases')">Case Studies</button>
+  <button class="nav-btn" onclick="showSection('stakeholders')">Stakeholders</button>
+  <button class="nav-btn" onclick="showSection('vocab')">Vocabulary</button>
+  <button class="nav-btn" onclick="showSection('quiz')">Quiz Game</button>
+</div>
+
+<!-- ====== SECTION: OVERVIEW ====== -->
+<div class="section active" id="sec-overview">
+  <div class="section-header">
+    <h2>Welcome to Auxilium Law Explorer</h2>
+    <p>Learn how healthcare billing disputes work &mdash; explained so even an 8-year-old can follow along!</p>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <span class="number">11.8%</span>
+      <span class="label">Claims denied in 2024</span>
+    </div>
+    <div class="stat-box">
+      <span class="number">$19.7B</span>
+      <span class="label">Spent on appeals yearly</span>
+    </div>
+    <div class="stat-box">
+      <span class="number">0.2%</span>
+      <span class="label">Denied claims appealed</span>
+    </div>
+    <div class="stat-box">
+      <span class="number">56%</span>
+      <span class="label">Appeals that WIN</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>What is Auxilium?</h4>
+    <p><strong>Auxilium</strong> (Latin for "help") is like <vocab class="vocab" data-kid="Think of TurboTax but for fighting unfair medical bills instead of doing taxes!">TurboTax for healthcare disputes</vocab>. It helps patients and providers solve billing disagreements fairly using a shared inbox and deadline tracker.</p>
+    <p style="margin-top:8px;">The <vocab class="vocab" data-kid="A law that says you can't get a surprise bill you didn't expect, like getting charged for something nobody told you about!">No Surprises Act</vocab> created new rules so patients don't get stuck with unfair bills. Auxilium builds technology to make those rules actually work for real people.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>The Problem</h3>
+      <p>Imagine you go to the doctor. They say it'll cost $100. Then a bill arrives for $600! That's a <vocab class="vocab" data-kid="When a doctor or hospital charges way more than they said they would. Like ordering a $5 toy and being told you owe $50!">surprise bill</vocab>.</p>
+      <ul style="margin-top:10px;padding-left:20px;">
+        <li>Claim denials rose <strong>16%</strong> from 2018-2024</li>
+        <li><strong>$194 billion</strong> in medical debt in collections</li>
+        <li><strong>36%</strong> of adults skipped care because of cost</li>
+        <li>Medical bills are the #1 cause of bankruptcy</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>The Solution</h3>
+      <p>Congress passed the <strong>No Surprises Act</strong> in 2020 to protect patients. It created a process called <vocab class="vocab" data-kid="A special way to say 'Hey, this bill is wrong!' and get a fair person to decide who's right &mdash; like asking a teacher to settle an argument.">PPDR</vocab> (Patient-Provider Dispute Resolution) where patients can challenge bills that are way higher than their estimate.</p>
+      <p style="margin-top:8px;">Auxilium automates this entire process &mdash; collecting documents, building dispute packets, tracking deadlines, and routing everything correctly.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>The Human Cost</h3>
+    <div class="stat-row">
+      <div class="stat-box" style="background:linear-gradient(135deg,#dc2626,#f97316)">
+        <span class="number">$194B</span>
+        <span class="label">Medical debt in collections</span>
+      </div>
+      <div class="stat-box" style="background:linear-gradient(135deg,#dc2626,#f97316)">
+        <span class="number">44%</span>
+        <span class="label">Higher housing instability risk</span>
+      </div>
+      <div class="stat-box" style="background:linear-gradient(135deg,#dc2626,#f97316)">
+        <span class="number">93%</span>
+        <span class="label">Doctors say delays hurt patients</span>
+      </div>
+    </div>
+    <p style="color:var(--text-light);font-size:0.9em;text-align:center;margin-top:8px;">Behind every denied claim is a real person whose health and home are at risk.</p>
+  </div>
+</div>
+
+<!-- ====== SECTION: NO SURPRISES ACT ====== -->
+<div class="section" id="sec-nsa">
+  <div class="section-header">
+    <h2>The No Surprises Act</h2>
+    <p>Signed December 27, 2020 &bull; Effective January 1, 2022 &bull; Pub. L. 116-260</p>
+  </div>
+
+  <div class="highlight-box">
+    <h4>For an 8-Year-Old:</h4>
+    <p>Imagine you go to a restaurant. The menu says a burger is $5. But when the check comes, they charge you $50 because the cook wasn't "in your plan." That's not fair, right? The No Surprises Act is like a rule that says restaurants (hospitals) have to tell you the real price AND can't surprise you with a huge bill from a cook (doctor) you didn't pick.</p>
+  </div>
+
+  <div class="card">
+    <h3>Three Big Protections</h3>
+    <div class="card-grid" style="margin-top:12px;">
+      <div style="background:#ecfeff;padding:16px;border-radius:12px;border-left:4px solid var(--cyan);">
+        <h4 style="color:var(--navy);">1. No Surprise Bills</h4>
+        <p><vocab class="vocab" data-kid="If you go to a hospital that takes your insurance, and a doctor there doesn't take your insurance, YOU don't get stuck with the extra bill. The hospital and insurance have to work it out.">Ban on surprise billing</vocab> for emergency services and non-emergency services at in-network facilities.</p>
+      </div>
+      <div style="background:#f0fdf4;padding:16px;border-radius:12px;border-left:4px solid #10b981;">
+        <h4 style="color:var(--navy);">2. Cost Protection for Uninsured</h4>
+        <p>If you don't have insurance, you get a <vocab class="vocab" data-kid="A paper that tells you how much your doctor visit will probably cost BEFORE you go. Like getting the price of a toy before you buy it!">Good Faith Estimate (GFE)</vocab> before your visit, and can dispute bills that are way more than the estimate.</p>
+      </div>
+      <div style="background:#fefce8;padding:16px;border-radius:12px;border-left:4px solid #eab308;">
+        <h4 style="color:var(--navy);">3. Price Transparency</h4>
+        <p>Hospitals and doctors must be upfront about costs. No hiding fees or making it hard to find out what things cost.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Federal IDR vs. PPDR &mdash; What's the Difference?</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px;">
+      <div style="background:#eff6ff;padding:16px;border-radius:12px;">
+        <h4 style="color:#1e40af;">Federal IDR</h4>
+        <p style="font-size:0.9em;"><vocab class="vocab" data-kid="When your insurance company and your doctor argue about the bill, and they ask someone else to pick who's right.">Independent Dispute Resolution</vocab></p>
+        <ul style="font-size:0.85em;padding-left:16px;margin-top:8px;">
+          <li>Between <strong>providers</strong> and <strong>health plans</strong></li>
+          <li>For <strong>insured</strong> patients</li>
+          <li>45 CFR &sect;&sect; 149.510&ndash;149.520</li>
+          <li>~1.19M disputes in H1 2025</li>
+          <li>Provider win rate: ~88%</li>
+        </ul>
+      </div>
+      <div style="background:#f0fdfa;padding:16px;border-radius:12px;">
+        <h4 style="color:var(--teal);">PPDR (Auxilium's Focus)</h4>
+        <p style="font-size:0.9em;"><vocab class="vocab" data-kid="When YOU argue with your doctor about a bill that's way more than they said it would be, and a fair helper decides.">Patient-Provider Dispute Resolution</vocab></p>
+        <ul style="font-size:0.85em;padding-left:16px;margin-top:8px;">
+          <li>Between <strong>patients</strong> and <strong>providers</strong></li>
+          <li>For <strong>uninsured/self-pay</strong> patients</li>
+          <li>45 CFR &sect; 149.620</li>
+          <li>Volumes not publicly tracked by CMS</li>
+          <li>Patient-favorable structure</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Five Requirements to File a PPDR Dispute</h3>
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div>
+        <strong>Uninsured or Self-Pay</strong>
+        <p style="font-size:0.9em;color:var(--text-light);">No group plan, individual coverage, Medicare, Medicaid, TRICARE, VA, or IHS. Self-pay patients who told the provider before care qualify too.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div>
+        <strong>Care After January 1, 2022</strong>
+        <p style="font-size:0.9em;color:var(--text-light);">Services must have been provided on or after the NSA effective date.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div>
+        <strong>Good Faith Estimate Received</strong>
+        <p style="font-size:0.9em;color:var(--text-light);">You must have received a GFE. No GFE = no PPDR (but you can file a CMS complaint).</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">4</div>
+      <div>
+        <strong>$400+ Over Estimate</strong>
+        <p style="font-size:0.9em;color:var(--text-light);">Billed charges exceed the GFE by at least $400 per provider/facility. Calculated independently, NOT added together.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">5</div>
+      <div>
+        <strong>Within 120 Days</strong>
+        <p style="font-size:0.9em;color:var(--text-light);">Must file within 120 calendar days of receiving the initial bill (not the date of service).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    <h4>Anti-Retaliation Protection</h4>
+    <p>Providers <strong>cannot</strong> send disputed bills to collections, threaten collections, or charge late fees during the PPDR process. Penalty: <strong>$100/day</strong> per violation (42 U.S.C. &sect; 300gg-22).</p>
+  </div>
+</div>
+
+<!-- ====== SECTION: PPDR PROCESS ====== -->
+<div class="section" id="sec-ppdr">
+  <div class="section-header">
+    <h2>PPDR Process Flow</h2>
+    <p>Step-by-step: How a patient dispute actually works</p>
+  </div>
+
+  <div class="highlight-box">
+    <h4>For an 8-Year-Old:</h4>
+    <p>It's like returning something at a store. You fill out a form, pay a tiny fee ($25), a fair helper looks at both sides, and then decides what you really owe. If you win, you even get your $25 back!</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="day-badge">Day 0</span>
+      <h4>1. File the Dispute</h4>
+      <p style="font-size:0.9em;">Submit form CMS-10791 via the Federal IDR Portal, electronically, or by mail to C2C Innovative Solutions (P.O. Box 45105, Jacksonville, FL 32232).</p>
+    </div>
+    <div class="timeline-item">
+      <span class="day-badge">Upon Request</span>
+      <h4>2. Pay $25 Admin Fee</h4>
+      <p style="font-size:0.9em;">Pay via credit card, PayPal, Venmo, or money order. If you win, this $25 gets deducted from what you owe.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="day-badge">Days 1-5</span>
+      <h4>3. SDR Entity Assigned</h4>
+      <p style="font-size:0.9em;">HHS selects a <vocab class="vocab" data-kid="A neutral helper picked by the government to listen to both sides and decide what's fair. Like a referee!">Selected Dispute Resolution (SDR) entity</vocab> (currently C2C Innovative Solutions). They check if your case qualifies, with a 21-business-day window to fix any problems.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="day-badge">+3 Business Days</span>
+      <h4>4. Conflict Check</h4>
+      <p style="font-size:0.9em;">The SDR entity checks for <vocab class="vocab" data-kid="Making sure the referee isn't friends with one of the teams! They need to be totally fair.">conflicts of interest</vocab>. If conflicted, HHS assigns a different SDR entity.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="day-badge">10 Business Days</span>
+      <h4>5. Provider Responds</h4>
+      <p style="font-size:0.9em;">The provider submits <vocab class="vocab" data-kid="Proof and facts that a reasonable person would believe. Like showing your homework to prove you did it!">credible information</vocab> showing: (a) charges reflect medically necessary service AND (b) charges are based on unforeseen circumstances.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="day-badge">During Step 5</span>
+      <h4>6. Settlement Window</h4>
+      <p style="font-size:0.9em;">Provider may offer a <vocab class="vocab" data-kid="When two people who are arguing agree to meet in the middle instead of having someone else decide. Like splitting the last cookie!">settlement</vocab>. Any settlement must reduce what you owe by at least $12.50 (50% of $25 fee).</p>
+    </div>
+    <div class="timeline-item">
+      <span class="day-badge">30 Business Days</span>
+      <h4>7. Final Decision</h4>
+      <p style="font-size:0.9em;">The SDR entity makes a <vocab class="vocab" data-kid="A final answer that everyone has to follow. Like when the teacher says 'That's my final answer' and everyone accepts it.">binding determination</vocab>. No appeal allowed. If provider fails to prove their case on GFE items, you pay GFE amount. On non-GFE items, you pay $0.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>What Happens After the Decision?</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px;">
+      <div style="background:#ecfdf5;padding:16px;border-radius:12px;">
+        <h4 style="color:#065f46;">If Patient Wins</h4>
+        <ul style="font-size:0.9em;padding-left:16px;">
+          <li>Provider adjusts bill within <strong>30 days</strong></li>
+          <li>$25 fee deducted from amount owed</li>
+          <li>Monitor for unauthorized credit reporting</li>
+          <li>If provider doesn't adjust: CMS complaint</li>
+        </ul>
+      </div>
+      <div style="background:#fef2f2;padding:16px;border-radius:12px;">
+        <h4 style="color:#991b1b;">If Provider Wins</h4>
+        <ul style="font-size:0.9em;padding-left:16px;">
+          <li>Patient owes lesser of billed charge or median network rate (GFE items)</li>
+          <li>Patient owes billed charge (non-GFE items)</li>
+          <li>$25 fee NOT refunded</li>
+          <li>No appeal exists &mdash; but can negotiate directly</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Auxilium's Role in PPDR</h3>
+    <p>Auxilium automates six modules of the PPDR process:</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:12px;">
+      <div style="background:#f0fdfa;padding:12px;border-radius:10px;text-align:center;">
+        <div style="font-size:1.5em;">1</div>
+        <strong style="font-size:0.85em;">Intake & Collection</strong>
+      </div>
+      <div style="background:#ecfeff;padding:12px;border-radius:10px;text-align:center;">
+        <div style="font-size:1.5em;">2</div>
+        <strong style="font-size:0.85em;">Packet Generation</strong>
+      </div>
+      <div style="background:#f0fdf4;padding:12px;border-radius:10px;text-align:center;">
+        <div style="font-size:1.5em;">3</div>
+        <strong style="font-size:0.85em;">Smart Routing</strong>
+      </div>
+      <div style="background:#fefce8;padding:12px;border-radius:10px;text-align:center;">
+        <div style="font-size:1.5em;">4</div>
+        <strong style="font-size:0.85em;">Deadline Enforcement</strong>
+      </div>
+      <div style="background:#fdf2f8;padding:12px;border-radius:10px;text-align:center;">
+        <div style="font-size:1.5em;">5</div>
+        <strong style="font-size:0.85em;">Audit Trail</strong>
+      </div>
+      <div style="background:#eff6ff;padding:12px;border-radius:10px;text-align:center;">
+        <div style="font-size:1.5em;">6</div>
+        <strong style="font-size:0.85em;">Status Dashboard</strong>
+      </div>
+    </div>
+    <div class="warning-box" style="margin-top:16px;">
+      <h4>Critical UPL Safeguard</h4>
+      <p style="font-size:0.9em;">Auxilium is the <strong>tool</strong>, not the representative. It collects documents and populates forms &mdash; it does NOT give legal advice, predict outcomes, or recommend whether to file. The patient always decides.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SECTION: STATE MAP ====== -->
+<div class="section" id="sec-map">
+  <div class="section-header">
+    <h2>State-by-State Legal Landscape</h2>
+    <p>Privacy laws, surprise billing rules, and compliance requirements vary by state</p>
+  </div>
+
+  <div class="highlight-box">
+    <h4>For an 8-Year-Old:</h4>
+    <p>Every state has its own rules, like how different schools have different dress codes. Some states have REALLY strict rules about keeping your medical information private (like Texas), while others are more relaxed. Click a state to learn its rules!</p>
+  </div>
+
+  <div class="map-legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#dc2626;"></div> Highest Risk (TX)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f97316;"></div> High Risk (WA, CA)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#eab308;"></div> Medium Risk (NY + others)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--teal);"></div> Standard Federal</div>
+  </div>
+
+  <div class="map-container">
+    <svg viewBox="0 0 960 600" id="us-map">
+      <!-- Simplified US Map paths for key states -->
+      <!-- TEXAS - Highest Risk -->
+      <path id="TX" d="M395,420 L395,510 L410,535 L430,545 L445,540 L460,548 L470,545 L480,555 L495,550 L510,540 L515,530 L520,520 L530,510 L535,500 L540,480 L540,460 L540,420 L540,400 L500,400 L460,400 L420,400 L395,400 Z" fill="#dc2626" onclick="showState('TX')"/>
+      <!-- CALIFORNIA - High Risk -->
+      <path id="CA" d="M120,280 L100,300 L85,330 L80,360 L85,390 L95,420 L110,440 L120,430 L130,420 L140,400 L145,380 L150,350 L150,320 L145,300 L135,280 Z" fill="#f97316" onclick="showState('CA')"/>
+      <!-- WASHINGTON - High Risk -->
+      <path id="WA" d="M120,80 L120,130 L175,130 L175,80 L155,70 L135,70 Z" fill="#f97316" onclick="showState('WA')"/>
+      <!-- NEW YORK - Medium Risk -->
+      <path id="NY" d="M790,140 L790,180 L810,190 L830,185 L840,170 L835,155 L820,140 L800,135 Z" fill="#eab308" onclick="showState('NY')"/>
+      <!-- FLORIDA -->
+      <path id="FL" d="M720,430 L740,440 L760,460 L770,490 L765,510 L750,520 L730,510 L710,490 L700,460 L700,440 Z" fill="var(--teal)" onclick="showState('FL')"/>
+      <!-- ARIZONA - Sandbox State -->
+      <path id="AZ" d="M195,360 L195,440 L245,440 L255,420 L255,360 L230,360 Z" fill="#8b5cf6" onclick="showState('AZ')"/>
+      <!-- UTAH - Sandbox State -->
+      <path id="UT" d="M230,230 L230,310 L275,310 L275,230 Z" fill="#8b5cf6" onclick="showState('UT')"/>
+      <!-- Other states (simplified rectangles for visual) -->
+      <path d="M275,200 L275,310 L320,310 L320,200 Z" fill="var(--teal)" onclick="showState('CO')"/> <!-- CO -->
+      <path d="M540,180 L540,280 L590,280 L590,180 Z" fill="var(--teal)" onclick="showState('IL')"/> <!-- IL -->
+      <path d="M650,200 L650,280 L700,280 L700,200 Z" fill="var(--teal)" onclick="showState('OH')"/> <!-- OH -->
+      <path d="M750,200 L750,270 L800,270 L800,200 Z" fill="var(--teal)" onclick="showState('PA')"/> <!-- PA -->
+      <path d="M610,300 L610,380 L660,380 L660,300 Z" fill="var(--teal)" onclick="showState('GA')"/> <!-- GA group -->
+      <path d="M480,130 L480,200 L540,200 L540,130 Z" fill="var(--teal)" onclick="showState('IA')"/> <!-- IA/MN area -->
+      <path d="M320,300 L320,400 L395,400 L395,300 Z" fill="var(--teal)" onclick="showState('NM')"/> <!-- NM/OK -->
+      <!-- State labels -->
+      <text x="470" y="480" font-size="14" fill="white" font-weight="bold" pointer-events="none">TX</text>
+      <text x="110" y="370" font-size="12" fill="white" font-weight="bold" pointer-events="none">CA</text>
+      <text x="140" y="108" font-size="11" fill="white" font-weight="bold" pointer-events="none">WA</text>
+      <text x="805" y="165" font-size="11" fill="white" font-weight="bold" pointer-events="none">NY</text>
+      <text x="730" y="480" font-size="11" fill="white" font-weight="bold" pointer-events="none">FL</text>
+      <text x="215" y="408" font-size="11" fill="white" font-weight="bold" pointer-events="none">AZ</text>
+      <text x="245" y="275" font-size="11" fill="white" font-weight="bold" pointer-events="none">UT</text>
+      <text x="290" y="260" font-size="11" fill="white" font-weight="bold" pointer-events="none">CO</text>
+      <text x="557" y="235" font-size="11" fill="white" font-weight="bold" pointer-events="none">IL</text>
+      <text x="665" y="245" font-size="11" fill="white" font-weight="bold" pointer-events="none">OH</text>
+      <text x="767" y="240" font-size="11" fill="white" font-weight="bold" pointer-events="none">PA</text>
+    </svg>
+  </div>
+
+  <div class="state-info-panel" id="stateInfo">
+    <h3 style="color:var(--teal);">Click a state on the map above!</h3>
+    <p style="color:var(--text-light);">Each state has different rules about medical privacy, surprise billing, and how companies like Auxilium can operate. The colors show the compliance risk level.</p>
+  </div>
+</div>
+
+<!-- ====== SECTION: AI & HEALTH LAWS ====== -->
+<div class="section" id="sec-ai-laws">
+  <div class="section-header">
+    <h2>AI & Healthcare Laws</h2>
+    <p>Key laws and regulations shaping AI in patient-provider dispute resolution</p>
+  </div>
+
+  <div class="highlight-box">
+    <h4>For an 8-Year-Old:</h4>
+    <p>When computers help decide things about your health or money, there have to be rules to keep things fair. Just like how a video game needs rules so nobody cheats, AI in healthcare needs rules so the computer doesn't make mistakes that hurt people.</p>
+  </div>
+
+  <div class="ai-card">
+    <div class="ai-card-header" style="background:var(--gradient-dark);">FTC Health Breach Notification Rule (16 CFR Part 318)</div>
+    <div class="ai-card-body">
+      <span class="case-tag tag-red">HIGH RELEVANCE</span>
+      <p style="margin-top:8px;">Covers <vocab class="vocab" data-kid="Companies that keep track of your health information on a computer, like an app that stores your doctor bills.">vendors of personal health records</vocab>. If Auxilium's database is breached, it must notify affected patients within <strong>60 days</strong>.</p>
+      <p style="margin-top:8px;"><strong>Penalty:</strong> Up to <strong>$50,120 per incident</strong></p>
+      <p style="margin-top:8px;"><strong>Why it matters for Auxilium:</strong> Even though HIPAA likely doesn't directly apply (Auxilium isn't a hospital or insurer), the FTC rule catches health-data companies in its net. This is the primary federal privacy law governing Auxilium.</p>
+    </div>
+  </div>
+
+  <div class="ai-card">
+    <div class="ai-card-header" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">FTC Act Section 5 &mdash; Unfair or Deceptive Practices</div>
+    <div class="ai-card-body">
+      <span class="case-tag tag-red">HIGH RELEVANCE</span>
+      <p style="margin-top:8px;">The FTC can take action against any company using AI in ways that are <vocab class="vocab" data-kid="When a company tricks you or doesn't tell you important stuff, like hiding the real price of something.">unfair or deceptive</vocab>. This is why Auxilium must:</p>
+      <ul style="padding-left:20px;margin-top:8px;font-size:0.9em;">
+        <li>Disclose all fees prominently</li>
+        <li>Tell patients they can self-file for just $25</li>
+        <li>Never claim the AI gives "legal advice"</li>
+        <li>Never predict dispute outcomes</li>
+      </ul>
+      <p style="margin-top:8px;font-size:0.9em;color:var(--text-light);"><strong>Key precedent:</strong> FTC fined DoNotPay $193,000 in 2024 for misleading AI-lawyer claims.</p>
+    </div>
+  </div>
+
+  <div class="ai-card">
+    <div class="ai-card-header" style="background:linear-gradient(135deg,#dc2626,#f97316);">Unauthorized Practice of Law (UPL) Doctrine</div>
+    <div class="ai-card-body">
+      <span class="case-tag tag-red">HIGH SEVERITY</span>
+      <p style="margin-top:8px;">Filing documents with a federal administrative body is a <vocab class="vocab" data-kid="Doing lawyer work when you're not actually a lawyer. Like pretending to be a doctor when you're not!">hallmark of legal practice</vocab>. AI tools that cross from document preparation into legal judgment face serious risk.</p>
+      <div class="warning-box">
+        <h4>The TIKD Rule</h4>
+        <p style="font-size:0.9em;">In <em>Florida Bar v. TIKD Services</em> (2021), a tech company that helped people contest traffic tickets was <strong>permanently shut down</strong> for UPL &mdash; even though no consumers were harmed. This is why Auxilium must stay on the "tool" side of the line.</p>
+      </div>
+      <p style="margin-top:8px;"><strong>Safe zone:</strong> Document prep, form population, deadline tracking</p>
+      <p><strong>Danger zone:</strong> Legal advice, filing recommendations, success predictions, strategy</p>
+    </div>
+  </div>
+
+  <div class="ai-card">
+    <div class="ai-card-header" style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">HIPAA &amp; the AI Privacy Gap</div>
+    <div class="ai-card-body">
+      <span class="case-tag tag-amber">NUANCED</span>
+      <p style="margin-top:8px;">Here's the twist: <vocab class="vocab" data-kid="A big rule that says hospitals and insurance companies have to keep your health information secret. But it only covers THEM, not every app!">HIPAA</vocab> likely does NOT apply to Auxilium because it's neither a covered entity nor a business associate. When a patient voluntarily shares bills, HIPAA doesn't follow the data.</p>
+      <p style="margin-top:8px;">But this creates a <strong>gap</strong> that state laws fill &mdash; and some states (especially Texas) are even stricter than HIPAA.</p>
+      <p style="margin-top:8px;"><strong>Auxilium's approach:</strong> Build to HIPAA Security Rule standards anyway (AES-256 encryption, TLS 1.2+, SOC 2 Type II) as a design baseline that satisfies most state requirements.</p>
+    </div>
+  </div>
+
+  <div class="ai-card">
+    <div class="ai-card-header" style="background:linear-gradient(135deg,#059669,#10b981);">Credit Repair Organizations Act (CROA) & TSR Debt Relief Rules</div>
+    <div class="ai-card-body">
+      <span class="case-tag tag-amber">MEDIUM-HIGH</span>
+      <p style="margin-top:8px;">If Auxilium is classified as a <vocab class="vocab" data-kid="A company that helps people who owe money try to owe less. There are special rules for these companies so they don't trick people.">debt relief service</vocab>, the FTC's Telemarketing Sales Rule could prohibit charging fees upfront.</p>
+      <p style="margin-top:8px;"><strong>Key distinction:</strong> Auxilium must market itself as facilitating a <em>federal administrative process</em>, NOT as reducing or eliminating debt. Language matters!</p>
+    </div>
+  </div>
+
+  <div class="ai-card">
+    <div class="ai-card-header" style="background:linear-gradient(135deg,#b45309,#f59e0b);">AI Regulatory Sandboxes (AZ & UT)</div>
+    <div class="ai-card-body">
+      <span class="case-tag tag-green">OPPORTUNITY</span>
+      <p style="margin-top:8px;">Arizona and Utah have created <vocab class="vocab" data-kid="A special playground where new tech companies can try out their ideas with lighter rules, kind of like a practice area before the real game!">regulatory sandboxes</vocab> that allow legal tech companies to operate under reduced UPL restrictions. These could provide a safer testing ground for Auxilium's more automated features.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SECTION: CASE STUDIES ====== -->
+<div class="section" id="sec-cases">
+  <div class="section-header">
+    <h2>Legal Case Studies</h2>
+    <p>Real cases that shape how healthcare dispute tech can &mdash; and can't &mdash; operate</p>
+  </div>
+
+  <div class="highlight-box">
+    <h4>For an 8-Year-Old:</h4>
+    <p>These are stories about what happened when other companies tried to help people with their bills. Some got in trouble because they went too far. Learning from their mistakes helps Auxilium stay safe!</p>
+  </div>
+
+  <div class="case-study">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h4>Florida Bar v. TIKD Services (2021) &mdash; The Company That Got Shut Down</h4>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <div style="margin-bottom:12px;">
+        <span class="case-tag tag-red">UPL</span>
+        <span class="case-tag tag-blue">FLORIDA</span>
+        <span class="case-tag tag-amber">PRECEDENT-SETTING</span>
+      </div>
+      <h4>What Happened:</h4>
+      <p>TIKD was a tech company that helped people contest traffic tickets. Users uploaded their ticket, TIKD handled everything, and charged a fee. Sounds helpful, right?</p>
+      <h4 style="margin-top:12px;">The Problem:</h4>
+      <p>The Florida Bar said TIKD was practicing law without a license. Even though TIKD argued it was just a technology platform, the court said filing documents with a legal body and exercising judgment about legal matters = practicing law.</p>
+      <h4 style="margin-top:12px;">The Result:</h4>
+      <p><strong>Permanently enjoined (shut down).</strong> The court didn't care that no consumers were harmed.</p>
+      <h4 style="margin-top:12px;">Lesson for Auxilium:</h4>
+      <div style="background:#f0fdfa;padding:12px;border-radius:10px;margin-top:8px;">
+        <p>Auxilium must be the <strong>tool</strong>, not the <strong>lawyer</strong>. It populates forms with the patient's data. It tracks deadlines. But it never advises whether to file, predicts outcomes, or makes strategic decisions. The patient always decides.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-study">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h4>FTC v. DoNotPay (2024) &mdash; The $193K Fine for "Robot Lawyer" Claims</h4>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <div style="margin-bottom:12px;">
+        <span class="case-tag tag-red">FTC ENFORCEMENT</span>
+        <span class="case-tag tag-blue">FEDERAL</span>
+        <span class="case-tag tag-amber">AI MARKETING</span>
+      </div>
+      <h4>What Happened:</h4>
+      <p>DoNotPay marketed itself as the "world's first robot lawyer" and claimed its AI could replace human attorneys for legal tasks including dispute letters and legal filings.</p>
+      <h4 style="margin-top:12px;">The Problem:</h4>
+      <p>The FTC found DoNotPay's claims were misleading. The AI wasn't actually capable of providing legal services equivalent to a human lawyer. The marketing overpromised what the technology could deliver.</p>
+      <h4 style="margin-top:12px;">The Result:</h4>
+      <p><strong>$193,000 fine</strong> and required to stop making misleading claims about AI capabilities.</p>
+      <h4 style="margin-top:12px;">Lesson for Auxilium:</h4>
+      <div style="background:#f0fdfa;padding:12px;border-radius:10px;margin-top:8px;">
+        <p>Never claim AI can replace legal professionals. Auxilium is "assistive admin automation" &mdash; not a lawyer, not a legal advisor, not a decision-maker. Marketing language is <em>legally dispositive</em> (the exact words you use determine your legal risk).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-study">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h4>Texas Medical Association v. HHS (TMA I, II, III) &mdash; The Battle Over IDR Rules</h4>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <div style="margin-bottom:12px;">
+        <span class="case-tag tag-red">ONGOING</span>
+        <span class="case-tag tag-blue">5TH CIRCUIT</span>
+        <span class="case-tag tag-amber">NSA FRAMEWORK</span>
+      </div>
+      <h4>What's Happening:</h4>
+      <p>The Texas Medical Association has filed multiple lawsuits challenging how CMS implemented the No Surprises Act's IDR process.</p>
+      <h4 style="margin-top:12px;">TMA II (Final, 2024):</h4>
+      <p>The 5th Circuit eliminated the <vocab class="vocab" data-kid="A special number that insurance companies calculate for how much they usually pay. Doctors said the government was unfairly making this number too important.">QPA (Qualifying Payment Amount) presumption</vocab> in IDR. Arbitrators can no longer automatically default to the QPA &mdash; they must consider all factors equally.</p>
+      <h4 style="margin-top:12px;">TMA III (Pending):</h4>
+      <p>Challenges how the QPA itself is calculated. Reheard en banc in September 2025. Decision pending.</p>
+      <h4 style="margin-top:12px;">Why It Matters for Auxilium:</h4>
+      <div style="background:#f0fdfa;padding:12px;border-radius:10px;margin-top:8px;">
+        <p>While TMA litigation targets IDR (not PPDR directly), the regulatory instability affects the entire NSA framework. Auxilium must build with <strong>architectural flexibility</strong> to accommodate rule changes. The IDR Operations Proposed Rule from November 2023 remains unfinalized.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-study">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h4>IDR Volume Explosion &mdash; 100x CMS Projections</h4>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <div style="margin-bottom:12px;">
+        <span class="case-tag tag-green">MARKET VALIDATION</span>
+        <span class="case-tag tag-blue">FEDERAL DATA</span>
+      </div>
+      <h4>The Numbers:</h4>
+      <div class="stat-row">
+        <div class="stat-box">
+          <span class="number">1.19M</span>
+          <span class="label">IDR disputes, H1 2025</span>
+        </div>
+        <div class="stat-box">
+          <span class="number">248K</span>
+          <span class="label">Monthly disputes, Jan 2026</span>
+        </div>
+        <div class="stat-box">
+          <span class="number">88%</span>
+          <span class="label">Provider win rate</span>
+        </div>
+        <div class="stat-box">
+          <span class="number">100x</span>
+          <span class="label">Over original CMS projections</span>
+        </div>
+      </div>
+      <h4 style="margin-top:12px;">What This Means:</h4>
+      <p>The IDR explosion proves massive demand for automated dispute resolution. The top 3 filers (HaloMD, Team Health, SCP Health) account for ~44% of all disputes, showing that automation and specialization drive volume. CMS doesn't publish PPDR-specific volumes, but the demand signal is clear.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SECTION: STAKEHOLDERS ====== -->
+<div class="section" id="sec-stakeholders">
+  <div class="section-header">
+    <h2>Key Stakeholders</h2>
+    <p>Everyone who has a role in healthcare billing disputes</p>
+  </div>
+
+  <div class="highlight-box">
+    <h4>For an 8-Year-Old:</h4>
+    <p>Imagine a school play. There are actors, directors, stage crew, and the audience. In healthcare billing, there are also different "characters" who each play a part. Let's meet them!</p>
+  </div>
+
+  <div class="stakeholder">
+    <div class="stakeholder-icon" style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);color:#059669;">&#x1F9D1;</div>
+    <div>
+      <h4>Patients (Uninsured & Self-Pay)</h4>
+      <p style="font-size:0.9em;"><strong>Kid version:</strong> The person who went to the doctor and got a bill that's too high.</p>
+      <p style="font-size:0.85em;color:var(--text-light);margin-top:4px;">Can file PPDR disputes if bill exceeds GFE by $400+. Protected from retaliation. 1 in 6 U.S. adults carry medical debt. 50% can't pay a $500 unexpected medical bill.</p>
+    </div>
+  </div>
+
+  <div class="stakeholder">
+    <div class="stakeholder-icon" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);color:#2563eb;">&#x1F3E5;</div>
+    <div>
+      <h4>Healthcare Providers (Hospitals, Doctors, Facilities)</h4>
+      <p style="font-size:0.9em;"><strong>Kid version:</strong> The doctors and hospitals who send the bills.</p>
+      <p style="font-size:0.85em;color:var(--text-light);margin-top:4px;">Must provide GFEs. Must respond to PPDR disputes within 10 business days. Spend ~$40B annually on billing. 41% report >10% denial rates. Can offer settlements during PPDR.</p>
+    </div>
+  </div>
+
+  <div class="stakeholder">
+    <div class="stakeholder-icon" style="background:linear-gradient(135deg,#fdf2f8,#fce7f3);color:#db2777;">&#x1F3DB;</div>
+    <div>
+      <h4>CMS (Centers for Medicare & Medicaid Services)</h4>
+      <p style="font-size:0.9em;"><strong>Kid version:</strong> The government team that makes the rules and makes sure everyone follows them.</p>
+      <p style="font-size:0.85em;color:var(--text-light);margin-top:4px;">Administers the PPDR process. Selects SDR entities. Publishes guidance (through FAQ Set 71). Enforces GFE requirements. Can impose $100/day penalties on non-compliant providers.</p>
+    </div>
+  </div>
+
+  <div class="stakeholder">
+    <div class="stakeholder-icon" style="background:linear-gradient(135deg,#fefce8,#fef3c7);color:#d97706;">&#x2696;</div>
+    <div>
+      <h4>SDR Entities (Currently C2C Innovative Solutions)</h4>
+      <p style="font-size:0.9em;"><strong>Kid version:</strong> The referee who listens to both sides and makes the final call.</p>
+      <p style="font-size:0.85em;color:var(--text-light);margin-top:4px;">Selected by HHS to resolve PPDR disputes. Must complete conflict checks. Issues binding determinations within 30 business days. Applies the two-pronged test (medical necessity + unforeseen circumstances).</p>
+    </div>
+  </div>
+
+  <div class="stakeholder">
+    <div class="stakeholder-icon" style="background:linear-gradient(135deg,#f0fdfa,#ccfbf1);color:var(--teal);">&#x1F4BB;</div>
+    <div>
+      <h4>Health Tech / RCM Companies (Auxilium's Lane)</h4>
+      <p style="font-size:0.9em;"><strong>Kid version:</strong> The smart helper that uses computers to make the whole process easier and faster.</p>
+      <p style="font-size:0.85em;color:var(--text-light);margin-top:4px;">67% of providers believe AI can improve claims, yet only 14% have adopted it. Must navigate UPL, privacy, and regulatory positioning. $5.13B denial management market (2024), growing to $8.93B by 2030.</p>
+    </div>
+  </div>
+
+  <div class="stakeholder">
+    <div class="stakeholder-icon" style="background:linear-gradient(135deg,#fef2f2,#fee2e2);color:#dc2626;">&#x1F6E1;</div>
+    <div>
+      <h4>Health Insurance Plans / Payers</h4>
+      <p style="font-size:0.9em;"><strong>Kid version:</strong> The insurance companies. They're involved in IDR (not PPDR), but their behavior creates the problem.</p>
+      <p style="font-size:0.85em;color:var(--text-light);margin-top:4px;">Denials rose 16% from 2018-2024. 20% of ACA Marketplace claims denied in 2023. May resist tools that make appeals easier. Auxilium approaches payers later in GTM strategy.</p>
+    </div>
+  </div>
+
+  <div class="stakeholder">
+    <div class="stakeholder-icon" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);color:#7c3aed;">&#x1F4BC;</div>
+    <div>
+      <h4>Self-Insured Employers</h4>
+      <p style="font-size:0.9em;"><strong>Kid version:</strong> Big companies that pay for their workers' health bills directly instead of buying insurance.</p>
+      <p style="font-size:0.85em;color:var(--text-light);margin-top:4px;">63% of covered workers are in self-funded plans. They pay claims directly and feel the financial pain. Neutral-to-positive on dispute resolution tools. Key Auxilium customer segment.</p>
+    </div>
+  </div>
+
+  <div class="stakeholder">
+    <div class="stakeholder-icon" style="background:linear-gradient(135deg,#fff7ed,#ffedd5);color:#ea580c;">&#x1F4DC;</div>
+    <div>
+      <h4>State Regulators & Legislators</h4>
+      <p style="font-size:0.9em;"><strong>Kid version:</strong> People in each state who make extra rules on top of the federal ones.</p>
+      <p style="font-size:0.85em;color:var(--text-light);margin-top:4px;">Create state privacy laws (TX TMRPA, WA MHMDA, CA CCPA). Define UPL in their jurisdictions. Some offer regulatory sandboxes (AZ, UT). State surprise billing laws govern fully insured plans.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SECTION: VOCABULARY ====== -->
+<div class="section" id="sec-vocab">
+  <div class="section-header">
+    <h2>Vocabulary Glossary</h2>
+    <p>Every big word explained simply &mdash; grown-up version AND 8-year-old version!</p>
+  </div>
+
+  <div class="vocab-list" id="vocabList">
+    <!-- Populated by JavaScript -->
+  </div>
+</div>
+
+<!-- ====== SECTION: QUIZ ====== -->
+<div class="section" id="sec-quiz">
+  <div class="section-header">
+    <h2>Test Your Knowledge!</h2>
+    <p>See how much you've learned about healthcare dispute resolution</p>
+  </div>
+
+  <div class="score-display">
+    <div>Your Score</div>
+    <div class="score-num" id="quizScore">0</div>
+    <div>out of <span id="quizTotal">10</span></div>
+    <div class="progress-bar" style="margin-top:12px;background:rgba(255,255,255,0.2);">
+      <div class="progress-fill" id="quizProgress" style="width:0%;background:linear-gradient(90deg,#5eead4,#22d3ee);"></div>
+    </div>
+  </div>
+
+  <div id="quizContainer"></div>
+  <div style="text-align:center;margin-top:20px;">
+    <button class="nav-btn" onclick="resetQuiz()" style="font-size:1em;padding:12px 30px;">Start Over</button>
+  </div>
+</div>
+
+<footer style="background:var(--navy);color:white;text-align:center;padding:30px 20px;margin-top:40px;">
+  <h3 style="margin-bottom:8px;">AUXILIUM</h3>
+  <p style="opacity:0.7;font-size:0.85em;">The Case Engine for Healthcare Disputes</p>
+  <p style="opacity:0.5;font-size:0.75em;margin-top:12px;">Built for mastering healthcare dispute resolution law &bull; Educational use only &bull; Not legal advice</p>
+  <p style="opacity:0.5;font-size:0.75em;margin-top:4px;">Federal IDR Portal: nsa-idr.cms.gov &bull; PPDR Help: 1-800-985-3059 &bull; FederalPPDRQuestions@cms.hhs.gov</p>
+</footer>
+
+<script>
+// ====== NAVIGATION ======
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top: 200, behavior:'smooth'});
+}
+
+// ====== CASE STUDY TOGGLE ======
+function toggleCase(el) {
+  const body = el.nextElementSibling;
+  const toggle = el.querySelector('.toggle');
+  body.classList.toggle('open');
+  toggle.textContent = body.classList.contains('open') ? '-' : '+';
+}
+
+// ====== STATE MAP DATA ======
+const stateData = {
+  TX: {
+    name: 'Texas',
+    risk: 'HIGHEST RISK',
+    color: '#dc2626',
+    law: 'Texas Medical Records Privacy Act (TMRPA)',
+    details: `<strong>Why highest risk:</strong> Texas defines "covered entity" to include ANY person who assembles, collects, analyzes, or transmits protected health information for commercial gain. This triggers HIPAA-equivalent obligations even though Auxilium isn't a HIPAA covered entity.<br><br>
+    <strong>Penalties:</strong> $25,000 per knowing violation per year + private right of action<br><br>
+    <strong>State Surprise Billing:</strong> SB 1264 covers out-of-network disputes for insured patients through mandatory mediation/arbitration. HB 1592 (2023) allows ERISA plan opt-in.<br><br>
+    <strong>For PPDR:</strong> SB 1264 is largely irrelevant since PPDR serves uninsured/self-pay patients, but the privacy requirements are critical.`
+  },
+  WA: {
+    name: 'Washington',
+    risk: 'HIGH RISK',
+    color: '#f97316',
+    law: 'My Health My Data Act (RCW Ch. 19.373)',
+    details: `<strong>Effective:</strong> March 2024<br><br>
+    <strong>Key requirement:</strong> Covers billing information. Requires affirmative opt-in consent (must be SEPARATE from other consents), standalone privacy policy, access/deletion rights, and strict processor agreements.<br><br>
+    <strong>HIPAA exemption:</strong> Only applies to HIPAA covered entities. Auxilium gets NO exemption.<br><br>
+    <strong>Enforcement:</strong> Private right of action &mdash; meaning individual patients can sue directly.<br><br>
+    <strong>For Auxilium:</strong> Washington requires the most careful consent design. The separate opt-in requirement means Auxilium can't bundle health data consent with general terms of service.`
+  },
+  CA: {
+    name: 'California',
+    risk: 'HIGH RISK',
+    color: '#f97316',
+    law: 'CCPA/CPRA + Confidentiality of Medical Information Act (CMIA)',
+    details: `<strong>Double exposure:</strong> California's PHI exemption under CCPA &sect;1798.145(c)(1) only covers HIPAA covered entities. Auxilium = full CCPA obligations.<br><br>
+    <strong>Breach liability:</strong> Up to $750 per consumer per incident<br><br>
+    <strong>CMIA:</strong> Cal. Civ. Code &sect;&sect;56-56.37 may independently apply to health billing data.<br><br>
+    <strong>State dispute processes:</strong> California has Independent Medical Review for insured patients, but limited overlap with PPDR's uninsured/self-pay population.`
+  },
+  NY: {
+    name: 'New York',
+    risk: 'MEDIUM RISK',
+    color: '#eab308',
+    law: 'SHIELD Act (N.Y. Gen. Bus. Law &sect;&sect;899-aa, 899-bb)',
+    details: `<strong>Scope:</strong> Applies to ANY entity holding computerized data of New York residents. No size exemption.<br><br>
+    <strong>Requirements:</strong> Comprehensive data security program + breach notification.<br><br>
+    <strong>No HIPAA safe harbor:</strong> For non-covered entities like Auxilium.<br><br>
+    <strong>State dispute processes:</strong> New York has external review for insured patients.`
+  },
+  FL: {
+    name: 'Florida',
+    risk: 'STANDARD + UPL PRECEDENT',
+    color: '#0d9488',
+    law: 'Standard federal + TIKD precedent',
+    details: `<strong>Key significance:</strong> Home of the TIKD case. Florida Bar v. TIKD Services (2021) permanently enjoined a legal tech company for UPL, setting a critical precedent for companies like Auxilium.<br><br>
+    <strong>SDR Entity location:</strong> C2C Innovative Solutions is based in Jacksonville, FL (P.O. Box 45105).<br><br>
+    <strong>Privacy:</strong> Standard federal baseline applies. Florida's privacy laws are less aggressive than TX, WA, CA, or NY.`
+  },
+  AZ: {
+    name: 'Arizona',
+    risk: 'OPPORTUNITY',
+    color: '#8b5cf6',
+    law: 'Regulatory Sandbox Program',
+    details: `<strong>Sandbox:</strong> Arizona offers a regulatory sandbox that allows legal tech companies to operate under reduced UPL restrictions. This could provide a safer environment for Auxilium to test more automated PPDR filing features.<br><br>
+    <strong>Implication:</strong> Auxilium could pilot features in Arizona that would be risky in other states, gathering data on safety and effectiveness before expanding.`
+  },
+  UT: {
+    name: 'Utah',
+    risk: 'OPPORTUNITY',
+    color: '#8b5cf6',
+    law: 'Regulatory Sandbox Program',
+    details: `<strong>Sandbox:</strong> Like Arizona, Utah has a regulatory sandbox for legal tech innovation. Companies can apply to operate under modified regulatory requirements while demonstrating consumer protection.<br><br>
+    <strong>Strategy:</strong> Both AZ and UT sandboxes could serve as testing grounds for Auxilium's authorized representative model before broader rollout.`
+  },
+  CO: { name:'Colorado', risk:'STANDARD', color:'var(--teal)', law:'Standard federal baseline', details:'Colorado follows standard federal requirements. The Colorado Privacy Act (CPA) applies to certain data processors but has a health data exemption for HIPAA-covered information. Since Auxilium isn\'t HIPAA-covered, CPA obligations may apply.' },
+  IL: { name:'Illinois', risk:'STANDARD', color:'var(--teal)', law:'Standard federal baseline', details:'Illinois has the Biometric Information Privacy Act (BIPA) but this is less relevant for billing dispute data. Standard federal FTC and health breach notification rules apply. Illinois has state surprise billing protections for insured patients.' },
+  OH: { name:'Ohio', risk:'STANDARD', color:'var(--teal)', law:'Standard federal baseline', details:'Ohio follows standard federal baseline requirements. Less aggressive state privacy regime compared to TX, WA, CA, NY.' },
+  PA: { name:'Pennsylvania', risk:'STANDARD', color:'var(--teal)', law:'Standard federal baseline', details:'Pennsylvania has breach notification requirements but follows standard federal baseline for health data privacy. Less aggressive than priority states.' },
+  GA: { name:'Georgia Region', risk:'STANDARD', color:'var(--teal)', law:'Standard federal baseline', details:'Southern states generally follow the standard federal baseline. State surprise billing laws vary but PPDR is a federal process for uninsured/self-pay patients.' },
+  IA: { name:'Midwest Region', risk:'STANDARD', color:'var(--teal)', law:'Standard federal baseline', details:'Midwestern states generally follow the standard federal baseline with less aggressive state privacy requirements.' },
+  NM: { name:'Southwest Region', risk:'STANDARD', color:'var(--teal)', law:'Standard federal baseline', details:'Southwest states (NM, OK) follow standard federal baseline. Oklahoma has some state-level billing dispute provisions.' }
+};
+
+function showState(code) {
+  const state = stateData[code];
+  if (!state) return;
+  document.getElementById('stateInfo').innerHTML = `
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+      <div style="width:16px;height:16px;border-radius:4px;background:${state.color};"></div>
+      <h3 style="color:var(--navy);margin:0;">${state.name}</h3>
+      <span class="badge" style="background:${state.color};">${state.risk}</span>
+    </div>
+    <p style="font-weight:600;color:var(--teal);margin-bottom:8px;">${state.law}</p>
+    <p style="font-size:0.9em;">${state.details}</p>
+  `;
+}
+
+// ====== VOCABULARY DATA ======
+const vocabTerms = [
+  { term:'No Surprises Act (NSA)', grown:'Federal law (Pub. L. 116-260) enacted December 2020, effective January 2022, that bans surprise medical billing and creates dispute resolution processes.', kid:'A rule that says hospitals can\'t surprise you with a huge bill you weren\'t expecting. Like a rule that says the ice cream shop has to tell you the price BEFORE you order!' },
+  { term:'PPDR', grown:'Patient-Provider Dispute Resolution. The federal process under 45 CFR \u00a7 149.620 for uninsured/self-pay patients to challenge bills exceeding their Good Faith Estimate by $400+.', kid:'A way to say "Hey, this bill is wrong!" and get a fair person to decide. Like telling the teacher when someone isn\'t playing fair.' },
+  { term:'Good Faith Estimate (GFE)', grown:'Written estimate of expected charges that providers must give uninsured/self-pay patients before or upon scheduling care, per 45 CFR \u00a7 149.610.', kid:'A paper that tells you how much your doctor visit will probably cost BEFORE you go. Like checking the price tag on a toy before you buy it!' },
+  { term:'IDR', grown:'Independent Dispute Resolution. Federal process (45 CFR \u00a7\u00a7 149.510-520) for resolving payment disputes between providers and health plans for insured patients.', kid:'When your insurance company and your doctor can\'t agree on how much to pay, they ask a neutral person to decide. Like asking a referee!' },
+  { term:'SDR Entity', grown:'Selected Dispute Resolution entity. The neutral third party (currently C2C Innovative Solutions) selected by HHS to review and resolve PPDR disputes.', kid:'The fair referee that the government picks to listen to both sides and make the final call.' },
+  { term:'Binding Determination', grown:'A final, non-appealable decision by the SDR entity on what the patient owes. Neither party can appeal through the PPDR administrative process.', kid:'The referee\'s final answer that EVERYONE has to follow. No take-backs!' },
+  { term:'Credible Information', grown:'Information that "upon critical analysis is worthy of belief and is trustworthy" \u2014 the evidentiary standard providers must meet in PPDR responses.', kid:'Real proof that makes sense. Like showing your homework to prove you really did it, not just saying "trust me."' },
+  { term:'Authorized Representative', grown:'An individual authorized under state law to file a PPDR dispute on behalf of a patient. The regulatory tension between "individual" and "organization" is unresolved.', kid:'Someone you give permission to speak for you. Like when your parent talks to the teacher for you about something at school.' },
+  { term:'HIPAA', grown:'Health Insurance Portability and Accountability Act. Governs health data privacy for covered entities and business associates. Likely does NOT directly apply to Auxilium.', kid:'A big rule that says hospitals and insurance companies must keep your health secrets safe. But it only covers THEM, not every app!' },
+  { term:'UPL', grown:'Unauthorized Practice of Law. Performing legal services without a license. Filing with administrative bodies and exercising legal judgment are key risk factors.', kid:'Doing lawyer stuff when you\'re not a lawyer. Like pretending to be a pilot when you don\'t know how to fly!' },
+  { term:'QPA', grown:'Qualifying Payment Amount. The median in-network rate used as a reference in IDR proceedings. TMA II eliminated its presumptive weight; TMA III challenges its calculation.', kid:'A special number that shows what insurance usually pays for something. Doctors and insurance companies are still fighting about how to calculate it!' },
+  { term:'Surprise Bill', grown:'A bill from an out-of-network provider at an in-network facility, or an emergency service, where the patient had no choice or advance notice of network status.', kid:'Getting charged way more than you expected for something you couldn\'t control. Like ordering a $5 meal and getting a $50 bill!' },
+  { term:'Claim Denial', grown:'When a health plan refuses to pay for a medical service, often due to coding errors, missing information, or coverage disputes.', kid:'When the insurance company says "Nope, we\'re not paying for that!" even though you thought they would.' },
+  { term:'Prior Authorization', grown:'Requirement to get insurer approval before receiving a medical service. 93% of physicians say delays cause harm to patients.', kid:'Having to ask permission before the doctor can help you. Like needing a permission slip before going on a field trip.' },
+  { term:'Revenue Cycle Management (RCM)', grown:'The financial process healthcare organizations use to track patient care episodes from registration to final payment. $85.2B market in 2025.', kid:'The whole system of keeping track of money at a hospital \u2014 from when you sign in to when the last bill is paid.' },
+  { term:'Business Associate Agreement (BAA)', grown:'A HIPAA-required contract between a covered entity and a third party that handles protected health information on its behalf.', kid:'A special promise between a hospital and a helper company that says "We\'ll both keep the patient\'s secrets safe."' },
+  { term:'SOC 2 Type II', grown:'A security certification based on trust service criteria (security, availability, processing integrity, confidentiality, privacy). Auxilium targets this within Year 1.', kid:'A gold star certificate that proves a company is really really good at keeping information safe. Like getting an A+ in "keeping secrets" class!' },
+  { term:'AES-256 Encryption', grown:'Advanced Encryption Standard with 256-bit keys. Military-grade encryption used for data at rest. Auxilium\'s baseline security requirement.', kid:'A super-strong lock on your data that would take billions of years for even the fastest computer to break. Like an unbreakable treasure chest!' },
+  { term:'Civil Monetary Penalty (CMP)', grown:'A fine imposed by a federal agency for regulatory violations. PPDR anti-retaliation violations carry $100/day penalties under 42 U.S.C. \u00a7 300gg-22.', kid:'Money the government makes you pay as punishment for breaking the rules. Like having to put money in a "bad behavior" jar.' },
+  { term:'Self-Funded/Self-Insured Plan', grown:'An employer-sponsored health plan where the employer pays claims directly rather than purchasing insurance. 63% of covered workers are in self-funded plans.', kid:'When a big company pays for its workers\' doctor bills directly instead of buying insurance. Like your parent paying the doctor themselves instead of using a card.' }
+];
+
+function renderVocab() {
+  const container = document.getElementById('vocabList');
+  container.innerHTML = vocabTerms.map(v => `
+    <div class="vocab-card">
+      <div class="term">${v.term}</div>
+      <div class="grown-up">${v.grown}</div>
+      <div class="kid-def">${v.kid}</div>
+    </div>
+  `).join('');
+}
+renderVocab();
+
+// ====== QUIZ ======
+const quizQuestions = [
+  {
+    q: 'When was the No Surprises Act signed into law?',
+    options: ['January 1, 2022', 'December 27, 2020', 'March 2024', 'November 2023'],
+    correct: 1,
+    explanation: 'The NSA was signed December 27, 2020 as part of the Consolidated Appropriations Act, 2021. It became EFFECTIVE January 1, 2022.'
+  },
+  {
+    q: 'How much must a bill exceed the Good Faith Estimate to qualify for PPDR?',
+    options: ['$100', '$250', '$400', '$1,000'],
+    correct: 2,
+    explanation: 'The threshold is $400 per provider/facility. This is calculated independently for each provider, not added together!'
+  },
+  {
+    q: 'How many days do patients have to file a PPDR dispute after receiving their initial bill?',
+    options: ['30 days', '60 days', '90 days', '120 days'],
+    correct: 3,
+    explanation: '120 calendar days from receiving the initial bill (not the date of service). Auxilium tracks this with action alerts at 90 days and escalation at 115 days.'
+  },
+  {
+    q: 'What is the PPDR administrative fee?',
+    options: ['$10', '$25', '$50', '$100'],
+    correct: 1,
+    explanation: '$25 since the process launched. If the patient wins, it gets deducted from what they owe. Settlements must reduce liability by at least $12.50.'
+  },
+  {
+    q: 'Why was TIKD Services permanently shut down?',
+    options: ['Data breach', 'Unauthorized Practice of Law', 'Tax fraud', 'False advertising'],
+    correct: 1,
+    explanation: 'Florida Bar v. TIKD (2021): The court found TIKD was practicing law by filing documents with legal bodies and exercising legal judgment \u2014 even though no consumers were harmed.'
+  },
+  {
+    q: 'Which state has the HIGHEST privacy risk for companies like Auxilium?',
+    options: ['California', 'New York', 'Texas', 'Florida'],
+    correct: 2,
+    explanation: 'Texas\'s TMRPA casts the widest net \u2014 any entity that assembles/collects/analyzes PHI for commercial gain faces HIPAA-equivalent obligations, with $25K penalties per knowing violation.'
+  },
+  {
+    q: 'Does HIPAA directly apply to Auxilium?',
+    options: ['Yes, always', 'Likely NOT \u2014 Auxilium is neither a covered entity nor business associate', 'Only in Texas', 'Only for Medicare patients'],
+    correct: 1,
+    explanation: 'HIPAA covers "covered entities" (hospitals, insurers) and their business associates. When patients voluntarily share bills with Auxilium, HIPAA doesn\'t follow. But Auxilium builds to HIPAA standards anyway!'
+  },
+  {
+    q: 'How much was DoNotPay fined by the FTC?',
+    options: ['$50,000', '$100,000', '$193,000', '$500,000'],
+    correct: 2,
+    explanation: '$193,000 for misleading "robot lawyer" claims. The lesson: never claim AI can replace legal professionals. Marketing language determines legal risk.'
+  },
+  {
+    q: 'What is Auxilium\'s positioning to avoid regulatory risk?',
+    options: ['Clinical decision support', 'Robot lawyer', 'Assistive admin automation', 'Medical device'],
+    correct: 2,
+    explanation: 'Auxilium is "assistive admin automation" \u2014 not clinical decision support (which triggers FDA rules) and not a lawyer (which triggers UPL). It\'s the tool, not the decision-maker.'
+  },
+  {
+    q: 'What happens if a provider retaliates against a patient who filed PPDR?',
+    options: ['Nothing', '$100/day penalty', 'The case is dismissed', 'The provider wins automatically'],
+    correct: 1,
+    explanation: 'Federal civil monetary penalties of $100/day per failure under 42 U.S.C. \u00a7 300gg-22. Providers cannot send bills to collections, threaten collections, or charge late fees during PPDR.'
+  }
+];
+
+let score = 0;
+let answered = new Set();
+
+function renderQuiz() {
+  const container = document.getElementById('quizContainer');
+  container.innerHTML = quizQuestions.map((q, i) => `
+    <div class="quiz-card" id="q${i}">
+      <h3>Question ${i+1} of ${quizQuestions.length}</h3>
+      <p style="font-size:1.05em;margin-bottom:12px;">${q.q}</p>
+      ${q.options.map((opt, j) => `
+        <button class="quiz-option" onclick="checkAnswer(${i},${j})" id="q${i}o${j}">${opt}</button>
+      `).join('')}
+      <div class="quiz-feedback" id="fb${i}"></div>
+    </div>
+  `).join('');
+  document.getElementById('quizTotal').textContent = quizQuestions.length;
+}
+
+function checkAnswer(qi, oi) {
+  if (answered.has(qi)) return;
+  answered.add(qi);
+  const q = quizQuestions[qi];
+  const correct = q.correct === oi;
+  if (correct) score++;
+
+  // Style buttons
+  document.getElementById(`q${qi}o${oi}`).classList.add(correct ? 'correct' : 'wrong');
+  document.getElementById(`q${qi}o${q.correct}`).classList.add('correct');
+
+  // Disable all options
+  q.options.forEach((_, j) => {
+    document.getElementById(`q${qi}o${j}`).style.pointerEvents = 'none';
+  });
+
+  // Show feedback
+  const fb = document.getElementById(`fb${qi}`);
+  fb.style.display = 'block';
+  fb.style.background = correct ? '#ecfdf5' : '#fef2f2';
+  fb.style.color = correct ? '#065f46' : '#991b1b';
+  fb.innerHTML = `<strong>${correct ? 'Correct!' : 'Not quite!'}</strong> ${q.explanation}`;
+
+  // Update score
+  document.getElementById('quizScore').textContent = score;
+  document.getElementById('quizProgress').style.width = `${(answered.size / quizQuestions.length) * 100}%`;
+}
+
+function resetQuiz() {
+  score = 0;
+  answered = new Set();
+  document.getElementById('quizScore').textContent = 0;
+  document.getElementById('quizProgress').style.width = '0%';
+  renderQuiz();
+  window.scrollTo({top:300, behavior:'smooth'});
+}
+
+renderQuiz();
+</script>
+</body>
+</html>
